@@ -6,102 +6,182 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="styles.css">
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #f8fafc, #eef2f7);
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.soft-card {
+  transition: all 0.3s ease;
+}
+
+.soft-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body class="text-gray-800 font-sans overflow-x-hidden">
 
 <!-- NAVBAR -->
 <nav class="glass fixed w-full z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-4">
-    <div class="text-lg font-semibold text-[#005BAC] tracking-wide">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12 py-4">
+
+    <div class="text-lg font-semibold text-[#005BAC]">
       Kumon Fishermall
     </div>
+
+    <!-- Desktop -->
     <div class="hidden md:flex space-x-8 text-sm items-center">
-      <a href="#kumon">Home</a>
-      <a href="#programs">Programs</a>
-      <a href="#about">About</a>
-      <a href="#location">Location</a>
-      <a href="#" class="bg-[#005BAC] text-white px-5 py-2 rounded-full">
+      <a href="#kumon" class="hover:text-[#005BAC]">Home</a>
+      <a href="#about" class="hover:text-[#005BAC]">About</a>
+      <a href="#programs" class="hover:text-[#005BAC]">Programs</a>
+      <a href="#location" class="hover:text-[#005BAC]">Location</a>
+      <a href="#" class="bg-[#005BAC] text-white px-5 py-2 rounded-full hover:bg-blue-800 transition">
         Enroll Now
       </a>
     </div>
+
+    <!-- Mobile Button -->
+    <button id="menu-btn" class="md:hidden text-2xl text-[#005BAC]">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 space-y-4 text-sm">
+    <a href="#kumon" class="block">Home</a>
+    <a href="#about" class="block">About</a>
+    <a href="#programs" class="block">Programs</a>
+    <a href="#location" class="block">Location</a>
+    <a href="#" class="block bg-[#005BAC] text-white px-5 py-2 rounded-full text-center">
+      Enroll Now
+    </a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="pt-36 pb-24 px-6" id="kumon">
- <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+<section id="kumon" class="pt-28 md:pt-36 pb-20 md:pb-28 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
     <div class="reveal">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight">
-        Welcome to<br>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+        Welcome to <br>
         <span class="text-[#005BAC]">Kumon Fishermall</span>
       </h1>
 
-      <p class="mt-6 text-gray-600 text-lg leading-relaxed">
-        Our center at Fishermall Quezon Avenue provides individualized
-        Math and Reading programs that build confident,
+      <p class="mt-6 text-gray-600 text-lg leading-relaxed max-w-lg">
+        Individualized Math and Reading programs that develop confident,
         independent, and academically advanced learners.
       </p>
 
-      <div class="mt-8">
-        <a href="#" class="bg-[#005BAC] text-white px-8 py-3 rounded-full hover:bg-blue-800 transition">
+      <div class="mt-8 flex gap-4 flex-wrap">
+        <a href="#" class="bg-[#005BAC] text-white px-8 py-3 rounded-full hover:bg-blue-800 transition shadow-md">
           Book Free Assessment
+        </a>
+        <a href="#about" class="border border-[#005BAC] text-[#005BAC] px-8 py-3 rounded-full hover:bg-[#005BAC] hover:text-white transition">
+          Learn More
         </a>
       </div>
     </div>
 
-    <div class="reveal cloud-shape">
+    <div class="reveal">
       <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1400&q=80"
-     class="w-full object-cover"
-     alt="Kumon Students">
+           class="rounded-3xl shadow-2xl w-full object-cover"
+           alt="Kumon Students">
     </div>
 
   </div>
 </section>
 
-<!-- ABOUT US -->
-<section class="py-24 px-6 bg-white" id="about">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+<!-- ABOUT -->
+<section id="about" class="py-20 md:py-28 px-6 md:px-12 bg-white">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
     <div class="reveal">
-      <h2 class="text-3xl font-bold mb-6 text-[#005BAC]">
-        About Kumon Fishermall QC
+      <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC] mb-6">
+        About Our Center
       </h2>
-
       <p class="text-gray-600 leading-relaxed mb-4">
-        Kumon Fishermall QC is committed to developing independent,
-        confident learners through the globally proven Kumon Method.
-        Our center provides a structured yet supportive environment
-        where students build strong academic foundations in Mathematics
-        and Reading.
+        We help students build strong academic foundations through the
+        globally recognized Kumon Method.
       </p>
-
-      <p class="text-gray-600 leading-relaxed mb-4">
-        We believe that every child has the potential to excel.
-        Through consistent daily practice and individualized learning,
-        students gradually develop focus, discipline, and the ability
-        to solve problems independently.
-      </p>
-
       <p class="text-gray-600 leading-relaxed">
-        Our instructors carefully guide each student to ensure steady
-        progress while encouraging self-learning and long-term academic growth.
+        Our structured yet supportive environment develops focus,
+        discipline, and long-term learning skills.
       </p>
     </div>
 
-    <div class="reveal glass p-8 rounded-3xl">
-      <h3 class="text-xl font-semibold text-[#005BAC] mb-4">
-        Our Center Philosophy
+    <div class="glass p-10 rounded-3xl reveal">
+      <h3 class="text-xl font-semibold text-[#005BAC] mb-6">
+        Our Philosophy
       </h3>
-
       <ul class="space-y-4 text-gray-600">
-        <li>✔ Develop independent learning habits</li>
-        <li>✔ Strengthen academic fundamentals</li>
-        <li>✔ Build confidence through mastery</li>
-        <li>✔ Encourage discipline and consistency</li>
+        <li>✔ Independent Learning</li>
+        <li>✔ Academic Mastery</li>
+        <li>✔ Confidence Building</li>
+        <li>✔ Consistency & Discipline</li>
       </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="py-20 md:py-28 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto text-center mb-16 reveal">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC]">
+      Our Programs
+    </h2>
+  </div>
+
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+    <div class="glass p-8 rounded-3xl soft-card reveal">
+      <h3 class="text-xl font-semibold text-[#005BAC]">Mathematics</h3>
+      <p class="mt-4 text-gray-600">
+        Advanced calculation skills and logical problem solving.
+      </p>
+    </div>
+
+    <div class="glass p-8 rounded-3xl soft-card reveal">
+      <h3 class="text-xl font-semibold text-[#005BAC]">Reading</h3>
+      <p class="mt-4 text-gray-600">
+        Strong comprehension, grammar, and vocabulary development.
+      </p>
+    </div>
+
+    <div class="glass p-8 rounded-3xl soft-card reveal">
+      <h3 class="text-xl font-semibold text-[#005BAC]">Early Learners</h3>
+      <p class="mt-4 text-gray-600">
+        Foundational focus, discipline, and study habits.
+      </p>
     </div>
 
   </div>
@@ -192,124 +272,35 @@
   </div>
 </section>
 
-<!-- PROGRAMS -->
-<section id="programs" class="py-24 px-6 bg-white">
-  <div class="max-w-6xl mx-auto text-center mb-16 reveal">
-    <h2 class="text-3xl font-bold text-[#005BAC]">Our Programs</h2>
-    <p class="text-gray-600 mt-4">
-      Structured programs designed for mastery and academic excellence
-    </p>
-  </div>
+<!-- LOCATION -->
+<section id="location" class="py-20 md:py-28 px-6 md:px-12 bg-white">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
-  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
-
-    <div class="glass p-8 rounded-3xl reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC]">Mathematics Program</h3>
-      <p class="mt-4 text-gray-600">
-        Students develop strong calculation skills, logical reasoning,
-        and advanced problem-solving abilities. Many progress
-        beyond their school grade level.
-      </p>
-    </div>
-
-    <div class="glass p-8 rounded-3xl reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC]">Reading Program</h3>
-      <p class="mt-4 text-gray-600">
-        Focused on comprehension, grammar, and vocabulary development,
-        our Reading Program builds confident and articulate learners.
-      </p>
-    </div>
-
-    <div class="glass p-8 rounded-3xl reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC]">Early Learners</h3>
-      <p class="mt-4 text-gray-600">
-        Young children build foundational skills in focus,
-        discipline, and daily study habits —
-        setting them up for long-term academic success.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="py-24 px-6">
-  <div class="max-w-6xl mx-auto reveal">
-    <h2 class="text-3xl font-bold text-center mb-12 text-[#005BAC]">
-      Why Choose Kumon Fishermall?
-    </h2>
-
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <div class="glass p-8 rounded-2xl">
-        <h3 class="font-semibold text-[#005BAC]">Individualized Learning</h3>
-        <p class="mt-4 text-gray-600">
-          Each child progresses at their own pace with personalized
-          worksheet levels tailored to their ability.
-        </p>
-      </div>
-
-      <div class="glass p-8 rounded-2xl">
-        <h3 class="font-semibold text-[#005BAC]">Proven Global Success</h3>
-        <p class="mt-4 text-gray-600">
-          Over 60 years of success in more than 50 countries worldwide.
-        </p>
-      </div>
-
-      <div class="glass p-8 rounded-2xl">
-        <h3 class="font-semibold text-[#005BAC]">Convenient Location</h3>
-        <p class="mt-4 text-gray-600">
-          Conveniently located at Fisher Mall along Quezon Avenue,
-          accessible for families across Quezon City.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- LOCATION & CONTACT -->
-<section class="py-24 px-6" id="location">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-
-    <!-- Contact Info -->
     <div class="glass p-10 rounded-3xl reveal">
-      <h2 class="text-3xl font-bold text-[#005BAC] mb-6">
-        Visit Kumon Fishermall
+      <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC] mb-6">
+        Visit Us
       </h2>
-
       <p class="text-gray-600 mb-4">
-        📍 Fisher Mall, Quezon Avenue,<br>
-        Quezon City, Metro Manila
+        📍 Fisher Mall, Quezon Avenue, Quezon City
       </p>
-
-      <p class="text-gray-600 mb-4">
-        📞 Contact: +63 9XX XXX XXXX<br>
-        ✉ Email: fishermall@kumon.ph
-      </p>
-
       <p class="text-gray-600 mb-6">
-        We invite you to schedule a free diagnostic assessment
-        and discover how Kumon can support your child’s academic journey.
+        📞 +63 9XX XXX XXXX <br>
+        ✉ fishermall@kumon.ph
       </p>
 
       <form class="grid gap-4">
-        <input type="text" placeholder="Parent Name"
-               class="border rounded-full px-6 py-3 w-full">
-        <input type="email" placeholder="Email Address"
-               class="border rounded-full px-6 py-3 w-full">
-        <button class="bg-[#005BAC] text-white rounded-full px-6 py-3">
+        <input type="text" placeholder="Parent Name" class="border rounded-full px-6 py-3">
+        <input type="email" placeholder="Email Address" class="border rounded-full px-6 py-3">
+        <button class="bg-[#005BAC] text-white rounded-full px-6 py-3 hover:bg-blue-800 transition">
           Book Consultation
         </button>
       </form>
     </div>
 
-    <!-- Google Map -->
-    <div class="reveal rounded-3xl overflow-hidden shadow-lg">
+    <div class="rounded-3xl overflow-hidden shadow-xl reveal">
       <iframe
         src="https://www.google.com/maps?q=Fisher+Mall+Quezon+Avenue+Quezon+City&output=embed"
-        width="100%"
-        height="450"
+        class="w-full h-64 md:h-[450px]"
         style="border:0;"
         allowfullscreen=""
         loading="lazy">
@@ -319,102 +310,40 @@
   </div>
 </section>
 
-<!-- PREMIUM FOOTER -->
-<footer class="mt-28">
-
-  <div class="relative">
-
-    <!-- Subtle top separator -->
-    <div class="h-px bg-gradient-to-r from-transparent via-[#005BAC]/30 to-transparent mb-12"></div>
-
-    <div class="glass py-16 px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <!-- Top Row -->
-        <div class="grid md:grid-cols-3 gap-16 items-start">
-
-          <!-- Brand Column -->
-          <div>
-            <h3 class="text-xl font-semibold text-[#005BAC] mb-6">
-              Kumon Fishermall
-            </h3>
-
-            <p class="text-gray-600 leading-relaxed max-w-sm">
-              Empowering students to become confident, independent learners
-              through the globally recognized Kumon Method in
-              Mathematics and Reading.
-            </p>
-          </div>
-
-          <!-- Navigation Column -->
-          <div>
-            <h4 class="text-sm uppercase tracking-wider text-gray-500 mb-6">
-              Explore
-            </h4>
-
-            <ul class="space-y-4 text-gray-700">
-              <li>
-                <a href="#" class="hover:text-[#005BAC] transition duration-300">
-                  Our Programs
-                </a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-[#005BAC] transition duration-300">
-                  About Our Center
-                </a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-[#005BAC] transition duration-300">
-                  Location
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- CTA Column -->
-          <div>
-            <h4 class="text-sm uppercase tracking-wider text-gray-500 mb-6">
-              Take the First Step
-            </h4>
-
-            <p class="text-gray-600 mb-8 max-w-sm">
-              Schedule a free diagnostic assessment and discover how
-              Kumon can help your child reach their full potential.
-            </p>
-
-            <a href="#"
-               class="inline-block bg-[#005BAC] text-white px-7 py-3 rounded-full hover:bg-blue-800 transition duration-300 shadow-md">
-              Book Free Assessment
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Bottom Row -->
-        <div class="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
-
-          <p>
-            © 2026 Kumon Fishermall
-          </p>
-
-          <div class="flex gap-6">
-            <a href="#" class="hover:text-[#005BAC] transition">
-              Privacy Policy
-            </a>
-            <a href="#" class="hover:text-[#005BAC] transition">
-              Terms of Service
-            </a>
-          </div>
-
-        </div>
-
-      </div>
+<!-- FOOTER -->
+<footer class="glass py-10 px-6 mt-20">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 gap-4 text-center md:text-left">
+    <p>© 2026 Kumon Fishermall</p>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-[#005BAC]">Privacy Policy</a>
+      <a href="#" class="hover:text-[#005BAC]">Terms of Service</a>
     </div>
-
   </div>
-
 </footer>
-<script src="script.js"></script>
+
+<script>
+// Mobile Menu
+const btn = document.getElementById("menu-btn");
+const menu = document.getElementById("mobile-menu");
+
+btn.addEventListener("click", () => {
+  menu.classList.toggle("hidden");
+});
+
+// Scroll Reveal
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+  reveals.forEach((el) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
