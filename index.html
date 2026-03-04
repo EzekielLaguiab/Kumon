@@ -1,106 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Kumon Fishermall</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: linear-gradient(135deg, #f8fafc, #eef2f7);
-  min-height: 100vh;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-}
-
-.soft-card {
-  transition: all 0.3s ease;
-}
-
-.soft-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Kumon Fishermall</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body class="text-gray-800 font-sans overflow-x-hidden">
 
-<!-- NAVBAR -->
-<nav class="glass fixed w-full z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12 py-4">
+<!-- ── FAB Navigation (bottom-left circle) ─────────────────── -->
+<div id="fab-overlay"></div>
 
-    <div class="text-lg font-semibold text-[#005BAC]">
-      Kumon Fishermall
-    </div>
-
-    <!-- Desktop -->
-    <div class="hidden md:flex space-x-8 text-sm items-center">
-      <a href="#kumon" class="hover:text-[#005BAC]">Home</a>
-      <a href="#about" class="hover:text-[#005BAC]">About</a>
-      <a href="#programs" class="hover:text-[#005BAC]">Programs</a>
-      <a href="#location" class="hover:text-[#005BAC]">Location</a>
-      <a href="#" class="bg-[#005BAC] text-white px-5 py-2 rounded-full hover:bg-blue-800 transition">
-        Enroll Now
-      </a>
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menu-btn" class="md:hidden text-2xl text-[#005BAC]">
-      ☰
-    </button>
+<div id="fab-nav">
+  <!-- Nav items (appear above the button) -->
+  <div id="fab-items">
+    <a href="#kumon"    class="fab-item">Home</a>
+    <a href="#about"    class="fab-item">About</a>
+    <a href="#programs" class="fab-item">Programs</a>
+    <a href="#location" class="fab-item">Location</a>
+    <a href="#"         class="fab-item enroll">Enroll Now</a>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 space-y-4 text-sm">
-    <a href="#kumon" class="block">Home</a>
-    <a href="#about" class="block">About</a>
-    <a href="#programs" class="block">Programs</a>
-    <a href="#location" class="block">Location</a>
-    <a href="#" class="block bg-[#005BAC] text-white px-5 py-2 rounded-full text-center">
-      Enroll Now
-    </a>
-  </div>
-</nav>
+  <!-- Main circle button -->
+  <button id="fab-btn" aria-label="Open navigation">☰</button>
+</div>
 
-<!-- HERO -->
-<section id="kumon" class="pt-28 md:pt-36 pb-20 md:pb-28 px-6 md:px-12">
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section id="kumon" class="pt-20 md:pt-28 pb-20 md:pb-28 px-6 md:px-12">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-    <div class="reveal">
+    <div class="reveal hero-text">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
         Welcome to <br>
         <span class="text-[#005BAC]">Kumon Fishermall</span>
       </h1>
-
       <p class="mt-6 text-gray-600 text-lg leading-relaxed max-w-lg">
         Individualized Math and Reading programs that develop confident,
         independent, and academically advanced learners.
       </p>
-
       <div class="mt-8 flex gap-4 flex-wrap">
         <a href="#" class="bg-[#005BAC] text-white px-8 py-3 rounded-full hover:bg-blue-800 transition shadow-md">
           Book Free Assessment
@@ -111,7 +51,7 @@ body {
       </div>
     </div>
 
-    <div class="reveal">
+    <div class="reveal hero-image">
       <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1400&q=80"
            class="rounded-3xl shadow-2xl w-full object-cover"
            alt="Kumon Students">
@@ -120,178 +60,492 @@ body {
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ── ABOUT ──────────────────────────────────────────────────── -->
 <section id="about" class="py-20 md:py-28 px-6 md:px-12 bg-white">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+  <div class="max-w-7xl mx-auto">
 
-    <div class="reveal">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC] mb-6">
-        About Our Center
-      </h2>
-      <p class="text-gray-600 leading-relaxed mb-4">
-        We help students build strong academic foundations through the
-        globally recognized Kumon Method.
-      </p>
-      <p class="text-gray-600 leading-relaxed">
-        Our structured yet supportive environment develops focus,
-        discipline, and long-term learning skills.
-      </p>
+    <!-- Top row: intro + philosophy -->
+    <div class="grid md:grid-cols-2 gap-16 items-center mb-16">
+
+      <div class="reveal">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC] mb-6">
+          About Our Center
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Kumon Fishermall is a locally operated center under the globally
+          recognized Kumon franchise, located inside Fisher Mall along
+          Quezon Avenue, Quezon City. We have been proudly serving families
+          in the area and helping children unlock their full academic potential.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Our dedicated instructors guide each student through a carefully
+          structured program — one that adapts to their unique pace and learning
+          style, building real confidence alongside academic skill.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          We believe every child is capable of more. Our mission is to create
+          an encouraging and disciplined environment where students not only
+          excel academically but also develop the self-learning habits that
+          will serve them for life.
+        </p>
+      </div>
+
+      <div class="glass p-10 rounded-3xl reveal">
+        <h3 class="text-xl font-semibold text-[#005BAC] mb-6">Our Philosophy</h3>
+        <ul class="space-y-5 text-gray-600">
+          <li class="flex gap-3 items-start">
+            <span class="text-[#005BAC] font-bold mt-0.5">✔</span>
+            <div><span class="font-semibold text-gray-800">Independent Learning</span><br>
+            <span class="text-sm">Students are trained to read instructions and work through problems on their own.</span></div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-[#005BAC] font-bold mt-0.5">✔</span>
+            <div><span class="font-semibold text-gray-800">Academic Mastery</span><br>
+            <span class="text-sm">Each level must be fully mastered before advancing — no gaps left behind.</span></div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-[#005BAC] font-bold mt-0.5">✔</span>
+            <div><span class="font-semibold text-gray-800">Confidence Building</span><br>
+            <span class="text-sm">Success at every level builds genuine self-belief and a love for learning.</span></div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-[#005BAC] font-bold mt-0.5">✔</span>
+            <div><span class="font-semibold text-gray-800">Consistency &amp; Discipline</span><br>
+            <span class="text-sm">Daily practice, even just 20–30 minutes, creates lasting academic habits.</span></div>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
+    <!-- Stats row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div class="glass p-6 rounded-3xl text-center reveal">
+        <p class="text-3xl font-bold text-[#005BAC]">60+</p>
+        <p class="text-sm text-gray-500 mt-1">Years of Kumon Globally</p>
+      </div>
+      <div class="glass p-6 rounded-3xl text-center reveal">
+        <p class="text-3xl font-bold text-[#005BAC]">50+</p>
+        <p class="text-sm text-gray-500 mt-1">Countries Worldwide</p>
+      </div>
+      <div class="glass p-6 rounded-3xl text-center reveal">
+        <p class="text-3xl font-bold text-[#005BAC]">4M+</p>
+        <p class="text-sm text-gray-500 mt-1">Students Enrolled</p>
+      </div>
+      <div class="glass p-6 rounded-3xl text-center reveal">
+        <p class="text-3xl font-bold text-[#005BAC]">2×</p>
+        <p class="text-sm text-gray-500 mt-1">Weekly Center Sessions</p>
+      </div>
+    </div>
+
+    <!-- Meet the team / center highlights -->
     <div class="glass p-10 rounded-3xl reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC] mb-6">
-        Our Philosophy
-      </h3>
-      <ul class="space-y-4 text-gray-600">
-        <li>✔ Independent Learning</li>
-        <li>✔ Academic Mastery</li>
-        <li>✔ Confidence Building</li>
-        <li>✔ Consistency & Discipline</li>
+      <h3 class="text-xl font-semibold text-[#005BAC] mb-8 text-center">Why Choose Kumon Fishermall?</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-gray-600 text-sm">
+
+        <div class="flex gap-4 items-start">
+          <span class="text-2xl">🏆</span>
+          <div>
+            <p class="font-semibold text-gray-800 mb-1">Experienced Instructors</p>
+            <p>Our center staff are trained and certified by Kumon Philippines to deliver the highest standard of instruction.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="text-2xl">📍</span>
+          <div>
+            <p class="font-semibold text-gray-800 mb-1">Convenient Location</p>
+            <p>Located inside Fisher Mall — easily accessible by public transport and with ample parking.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="text-2xl">🤝</span>
+          <div>
+            <p class="font-semibold text-gray-800 mb-1">Parent Partnership</p>
+            <p>We keep parents informed with regular progress updates and guidance on supporting home study.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="text-2xl">📱</span>
+          <div>
+            <p class="font-semibold text-gray-800 mb-1">Digital &amp; Paper Options</p>
+            <p>Students can choose traditional worksheets or Kumon Connect digital tablets — whichever suits them best.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="text-2xl">🌟</span>
+          <div>
+            <p class="font-semibold text-gray-800 mb-1">Free Placement Assessment</p>
+            <p>New students receive a complimentary assessment to identify the perfect starting level.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <span class="text-2xl">🕐</span>
+          <div>
+            <p class="font-semibold text-gray-800 mb-1">Flexible Schedules</p>
+            <p>Morning and afternoon session slots are available to fit your family's busy routine.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROGRAMS ───────────────────────────────────────────────── -->
+<section id="programs" class="py-20 md:py-28 px-6 md:px-12">
+
+  <!-- Heading -->
+  <div class="max-w-7xl mx-auto text-center mb-4 reveal">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC]">Our Programs</h2>
+    <p class="text-gray-500 mt-3 max-w-2xl mx-auto text-base">
+      Each Kumon program is self-paced and individually tailored — students advance
+      only when they have mastered each level.
+    </p>
+  </div>
+
+  <!-- Program Cards -->
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+
+    <!-- Math -->
+    <div class="glass p-8 rounded-3xl soft-card reveal flex flex-col">
+      <div class="text-4xl mb-4">🔢</div>
+      <h3 class="text-xl font-semibold text-[#005BAC]">Mathematics</h3>
+      <p class="mt-3 text-gray-500 text-sm">Ages 3 &amp; up · Levels 7A – O</p>
+      <p class="mt-4 text-gray-600 leading-relaxed flex-1">
+        From counting and number recognition all the way to calculus and beyond.
+        Students build speed, accuracy, and deep number sense through daily practice.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-600">
+        <li>✔ Number recognition &amp; counting</li>
+        <li>✔ Four operations &amp; fractions</li>
+        <li>✔ Algebra, geometry &amp; calculus</li>
+        <li>✔ Mental arithmetic &amp; speed drills</li>
+      </ul>
+    </div>
+
+    <!-- Reading / English -->
+    <div class="glass p-8 rounded-3xl soft-card reveal flex flex-col">
+      <div class="text-4xl mb-4">📖</div>
+      <h3 class="text-xl font-semibold text-[#005BAC]">Reading &amp; English</h3>
+      <p class="mt-3 text-gray-500 text-sm">Ages 3 &amp; up · Levels 7A – O</p>
+      <p class="mt-4 text-gray-600 leading-relaxed flex-1">
+        From phonics and basic sentence reading to advanced literary analysis.
+        Students develop strong vocabulary, grammar, and comprehension skills.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-600">
+        <li>✔ Phonics &amp; sight words</li>
+        <li>✔ Reading fluency &amp; comprehension</li>
+        <li>✔ Vocabulary &amp; grammar mastery</li>
+        <li>✔ Critical reading &amp; analysis</li>
+      </ul>
+    </div>
+
+    <!-- Early Learners -->
+    <div class="glass p-8 rounded-3xl soft-card reveal flex flex-col">
+      <div class="text-4xl mb-4">🌱</div>
+      <h3 class="text-xl font-semibold text-[#005BAC]">Early Learners</h3>
+      <p class="mt-3 text-gray-500 text-sm">Ages 2 – 5 · Pre-K Readiness</p>
+      <p class="mt-4 text-gray-600 leading-relaxed flex-1">
+        A gentle introduction to structured learning designed to prepare young
+        children for school. Develops focus, pen control, and a love for learning.
+      </p>
+      <ul class="mt-5 space-y-2 text-sm text-gray-600">
+        <li>✔ Pencil grip &amp; pen control</li>
+        <li>✔ Shapes, colors &amp; patterns</li>
+        <li>✔ Listening &amp; following instructions</li>
+        <li>✔ Building study habits early</li>
       </ul>
     </div>
 
   </div>
-</section>
 
-<!-- PROGRAMS -->
-<section id="programs" class="py-20 md:py-28 px-6 md:px-12">
-  <div class="max-w-7xl mx-auto text-center mb-16 reveal">
-    <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC]">
-      Our Programs
-    </h2>
-  </div>
-
-  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-
-    <div class="glass p-8 rounded-3xl soft-card reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC]">Mathematics</h3>
-      <p class="mt-4 text-gray-600">
-        Advanced calculation skills and logical problem solving.
-      </p>
+  <!-- Program Levels Banner -->
+  <div class="max-w-7xl mx-auto mt-16 glass p-10 rounded-3xl reveal">
+    <h3 class="text-xl font-semibold text-[#005BAC] mb-6 text-center">Program Level Progression</h3>
+    <div class="overflow-x-auto">
+      <div class="flex items-center gap-2 min-w-max mx-auto justify-center flex-wrap">
+        <span class="level-pill">7A–5A<br><span class="text-xs font-normal">Pre-K</span></span>
+        <span class="level-arrow">→</span>
+        <span class="level-pill">4A–2A<br><span class="text-xs font-normal">K–Grade 1</span></span>
+        <span class="level-arrow">→</span>
+        <span class="level-pill">A–C<br><span class="text-xs font-normal">Grade 2–4</span></span>
+        <span class="level-arrow">→</span>
+        <span class="level-pill">D–F<br><span class="text-xs font-normal">Grade 5–7</span></span>
+        <span class="level-arrow">→</span>
+        <span class="level-pill">G–I<br><span class="text-xs font-normal">Grade 8–10</span></span>
+        <span class="level-arrow">→</span>
+        <span class="level-pill level-pill-accent">J–O<br><span class="text-xs font-normal">Advanced</span></span>
+      </div>
     </div>
-
-    <div class="glass p-8 rounded-3xl soft-card reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC]">Reading</h3>
-      <p class="mt-4 text-gray-600">
-        Strong comprehension, grammar, and vocabulary development.
-      </p>
-    </div>
-
-    <div class="glass p-8 rounded-3xl soft-card reveal">
-      <h3 class="text-xl font-semibold text-[#005BAC]">Early Learners</h3>
-      <p class="mt-4 text-gray-600">
-        Foundational focus, discipline, and study habits.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT KUMON METHOD -->
-<section class="py-24 px-6" >
-  <div class="max-w-6xl mx-auto glass p-12 rounded-3xl reveal">
-    <h2 class="text-3xl font-bold text-center mb-8 text-[#005BAC]">The Kumon Method</h2>
-
-    <p class="text-gray-600 leading-relaxed mb-6">
-      The Kumon Method is a globally recognized learning system that
-      focuses on individualized instruction and self-learning.
-      Each student begins at a level where they can succeed independently,
-      building confidence before gradually progressing to more advanced material.
-    </p>
-
-    <p class="text-gray-600 leading-relaxed">
-      Rather than simply teaching for short-term exam performance,
-      Kumon develops long-term academic ability by strengthening
-      concentration, time management, and perseverance —
-      essential skills for success in school and beyond.
+    <p class="text-center text-gray-500 text-sm mt-6">
+      Students begin at their own comfortable level and advance at their own pace — regardless of school grade.
     </p>
   </div>
+
+  <!-- How It Works Steps -->
+  <div class="max-w-7xl mx-auto mt-16">
+    <h3 class="text-xl md:text-2xl font-bold text-center text-[#005BAC] mb-10 reveal">How the Program Works</h3>
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+      <div class="glass p-6 rounded-3xl text-center soft-card reveal">
+        <div class="w-12 h-12 bg-[#005BAC] text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">1</div>
+        <h4 class="font-semibold text-gray-800 mb-2">Free Assessment</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          We evaluate your child's current ability to find the right starting level.
+        </p>
+      </div>
+
+      <div class="glass p-6 rounded-3xl text-center soft-card reveal">
+        <div class="w-12 h-12 bg-[#005BAC] text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">2</div>
+        <h4 class="font-semibold text-gray-800 mb-2">Individualized Plan</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          A customized learning path is designed specifically for your child.
+        </p>
+      </div>
+
+      <div class="glass p-6 rounded-3xl text-center soft-card reveal">
+        <div class="w-12 h-12 bg-[#005BAC] text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">3</div>
+        <h4 class="font-semibold text-gray-800 mb-2">Daily Practice</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Students complete worksheets in-center twice a week and at home daily.
+        </p>
+      </div>
+
+      <div class="glass p-6 rounded-3xl text-center soft-card reveal">
+        <div class="w-12 h-12 bg-[#005BAC] text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">4</div>
+        <h4 class="font-semibold text-gray-800 mb-2">Continuous Progress</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          As mastery is achieved, students advance to more challenging material.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
-<!-- KUMON CONNECT SECTION -->
+<!-- ── THE KUMON METHOD ───────────────────────────────────────── -->
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl font-bold text-[#005BAC]">The Kumon Method</h2>
+      <p class="text-gray-500 mt-3 max-w-2xl mx-auto">
+        A proven, self-paced learning system used by millions of students across 50+ countries.
+      </p>
+    </div>
+
+    <!-- Intro card -->
+    <div class="glass p-10 rounded-3xl reveal mb-10">
+      <p class="text-gray-600 leading-relaxed mb-4">
+        The Kumon Method is a globally recognized learning system that
+        focuses on individualized instruction and self-learning.
+        Each student begins at a level where they can succeed independently,
+        building confidence before gradually progressing to more advanced material.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Rather than simply teaching for short-term exam performance,
+        Kumon develops long-term academic ability by strengthening
+        concentration, time management, and perseverance —
+        essential skills for success in school and beyond.
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        Founded in Japan in 1958 by Toru Kumon, the method was originally created
+        by a father who wanted to help his own son excel in mathematics. Today, Kumon
+        operates in over 50 countries and has helped more than 4 million students
+        reach their full potential.
+      </p>
+    </div>
+
+    <!-- 3 Principles -->
+    <div class="grid sm:grid-cols-3 gap-6 mb-10">
+
+      <div class="glass p-8 rounded-3xl soft-card reveal text-center">
+        <div class="text-4xl mb-4">📐</div>
+        <h4 class="font-semibold text-[#005BAC] mb-2">Individualized Instruction</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Every student has a unique starting point and progresses at their own pace —
+          never rushed, never held back.
+        </p>
+      </div>
+
+      <div class="glass p-8 rounded-3xl soft-card reveal text-center">
+        <div class="text-4xl mb-4">🔁</div>
+        <h4 class="font-semibold text-[#005BAC] mb-2">Repetition &amp; Mastery</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Concepts are repeated and refined until full mastery is achieved,
+          ensuring no gaps in understanding before advancing.
+        </p>
+      </div>
+
+      <div class="glass p-8 rounded-3xl soft-card reveal text-center">
+        <div class="text-4xl mb-4">🧠</div>
+        <h4 class="font-semibold text-[#005BAC] mb-2">Self-Learning</h4>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Worksheets are designed so students learn by doing — developing
+          the ability to think and solve independently.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Quote highlight -->
+    <div class="glass p-10 rounded-3xl reveal border-l-4 border-[#005BAC]">
+      <p class="text-gray-700 italic text-lg leading-relaxed mb-3">
+        "The goal of Kumon is not just to advance students academically,
+        but to nurture their potential and cultivate a love of learning
+        that lasts a lifetime."
+      </p>
+      <p class="text-sm text-[#005BAC] font-semibold">— Toru Kumon, Founder</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── KUMON CONNECT ───────────────────────────────────────────── -->
 <section id="kumonconnect" class="py-24 px-6 bg-white">
   <div class="max-w-6xl mx-auto">
 
-    <div class="text-center mb-16 reveal">
+    <div class="text-center mb-12 reveal">
       <h2 class="text-3xl font-bold text-[#005BAC]">Kumon Connect</h2>
-      <p class="text-gray-600 mt-4 max-w-3xl mx-auto">
-        Kumon Connect is Kumon’s digital learning platform that allows students 
-        to complete their worksheets on a tablet while maintaining the same 
-        individualized learning method and academic standards as traditional paper worksheets.
+      <p class="text-gray-500 mt-3 max-w-2xl mx-auto">
+        Kumon's digital learning platform — same trusted method, now available on tablet.
       </p>
     </div>
 
-    <!-- Digital vs Paper -->
-    <div class="grid md:grid-cols-2 gap-12">
+    <!-- What is Kumon Connect -->
+    <div class="glass p-10 rounded-3xl reveal mb-10">
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Kumon Connect is Kumon's official digital learning platform that allows students
+        to complete their worksheets on a tablet using a stylus, while maintaining
+        the same individualized learning method and academic standards as traditional
+        paper worksheets.
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        Designed for modern learners, Kumon Connect seamlessly integrates technology
+        into the Kumon experience — giving instructors real-time insights into student
+        performance and allowing for faster, more precise feedback without ever
+        compromising the integrity of the Kumon Method.
+      </p>
+    </div>
 
-      <!-- Digital -->
+    <!-- Digital vs Paper comparison -->
+    <div class="grid md:grid-cols-2 gap-8 mb-10">
+
       <div class="glass p-10 rounded-3xl reveal">
-        <h3 class="text-2xl font-semibold text-[#005BAC] mb-6">
-          Digital Learning (Kumon Connect)
-        </h3>
-        <ul class="space-y-4 text-gray-600">
-          <li>✔ Worksheets completed on tablet with stylus</li>
-          <li>✔ Instant submission and faster instructor feedback</li>
-          <li>✔ Progress tracking and performance monitoring</li>
-          <li>✔ No need to carry physical worksheets</li>
-          <li>✔ Secure cloud-based storage of completed work</li>
-          <li>✔ Convenient for both in-center and home study</li>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl">💻</span>
+          <h3 class="text-xl font-semibold text-[#005BAC]">Digital Learning (Kumon Connect)</h3>
+        </div>
+        <ul class="space-y-4 text-gray-600 text-sm">
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Worksheets completed on tablet with stylus</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Instant submission and faster instructor feedback</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Real-time progress tracking &amp; performance monitoring</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> No need to carry physical worksheets</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Secure cloud-based storage of all completed work</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Convenient for both in-center and home study</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Eco-friendly — paperless learning environment</li>
         </ul>
       </div>
 
-      <!-- Paper -->
       <div class="glass p-10 rounded-3xl reveal">
-        <h3 class="text-2xl font-semibold text-[#005BAC] mb-6">
-          Traditional Paper Worksheets
-        </h3>
-        <ul class="space-y-4 text-gray-600">
-          <li>✔ Familiar and structured learning format</li>
-          <li>✔ Strong handwriting and fine motor skill development</li>
-          <li>✔ Physical tracking of completed worksheets</li>
-          <li>✔ Minimal screen exposure</li>
-          <li>✔ Proven method used globally for over 60 years</li>
-          <li>✔ Ideal for students who prefer tactile learning</li>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl">📄</span>
+          <h3 class="text-xl font-semibold text-[#005BAC]">Traditional Paper Worksheets</h3>
+        </div>
+        <ul class="space-y-4 text-gray-600 text-sm">
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Familiar and structured learning format</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Strong handwriting &amp; fine motor skill development</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Physical tracking of completed worksheet bundles</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Minimal screen exposure — ideal for young children</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Proven method used globally for over 60 years</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> Ideal for students who prefer tactile learning</li>
+          <li class="flex gap-2 items-start"><span class="text-[#005BAC] font-bold">✔</span> No device or internet connection required</li>
         </ul>
       </div>
 
     </div>
 
-    <!-- Comparison Summary -->
-    <div class="mt-16 glass p-12 rounded-3xl reveal text-center">
-      <h3 class="text-2xl font-semibold mb-6 text-[#005BAC]">
-        One Method, Two Learning Options
-      </h3>
-      <p class="text-gray-600 max-w-3xl mx-auto">
-        Whether through paper worksheets or Kumon Connect digital tablets, 
-        students follow the same carefully structured Kumon Method. 
-        Both formats build independence, confidence, and strong academic foundations. 
-        Parents may choose the format that best suits their child’s learning style.
+    <!-- How Kumon Connect Works steps -->
+    <div class="glass p-10 rounded-3xl reveal mb-10">
+      <h3 class="text-xl font-semibold text-[#005BAC] mb-8 text-center">How Kumon Connect Works</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm">
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#005BAC] text-white flex items-center justify-center font-bold mx-auto mb-3">1</div>
+          <p class="font-semibold text-gray-800 mb-1">Student logs in</p>
+          <p class="text-gray-500">Opens the Kumon Connect app on the center's tablet using their student account.</p>
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#005BAC] text-white flex items-center justify-center font-bold mx-auto mb-3">2</div>
+          <p class="font-semibold text-gray-800 mb-1">Completes worksheet</p>
+          <p class="text-gray-500">Writes answers directly on the screen using a stylus — just like paper.</p>
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#005BAC] text-white flex items-center justify-center font-bold mx-auto mb-3">3</div>
+          <p class="font-semibold text-gray-800 mb-1">Submits digitally</p>
+          <p class="text-gray-500">Work is instantly submitted to the instructor for marking and review.</p>
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#005BAC] text-white flex items-center justify-center font-bold mx-auto mb-3">4</div>
+          <p class="font-semibold text-gray-800 mb-1">Receives feedback</p>
+          <p class="text-gray-500">The instructor reviews and provides feedback quickly and accurately.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- One Method, Two Options summary -->
+    <div class="glass p-12 rounded-3xl reveal text-center">
+      <h3 class="text-2xl font-semibold mb-4 text-[#005BAC]">One Method, Two Learning Options</h3>
+      <p class="text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+        Whether through paper worksheets or Kumon Connect digital tablets,
+        students follow the same carefully structured Kumon Method.
+        Both formats build independence, confidence, and strong academic foundations.
+        Parents may choose the format that best suits their child's learning style and needs.
       </p>
+      <div class="grid sm:grid-cols-3 gap-6 text-sm text-gray-600">
+        <div class="bg-blue-50 rounded-2xl p-5">
+          <p class="text-2xl mb-2">🎯</p>
+          <p class="font-semibold text-gray-800 mb-1">Same Learning Goals</p>
+          <p>Both formats follow identical academic progressions and standards.</p>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-5">
+          <p class="text-2xl mb-2">👨‍🏫</p>
+          <p class="font-semibold text-gray-800 mb-1">Same Instructor Guidance</p>
+          <p>Your child receives the same level of personalized instructor support.</p>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-5">
+          <p class="text-2xl mb-2">🔄</p>
+          <p class="font-semibold text-gray-800 mb-1">Flexible to Switch</p>
+          <p>Parents can discuss format preferences with the instructor at any time.</p>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- LOCATION -->
+<!-- ── LOCATION ────────────────────────────────────────────────── -->
 <section id="location" class="py-20 md:py-28 px-6 md:px-12 bg-white">
   <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
 
     <div class="glass p-10 rounded-3xl reveal">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC] mb-6">
-        Visit Us
-      </h2>
-      <p class="text-gray-600 mb-4">
-        📍 Fisher Mall, Quezon Avenue, Quezon City
-      </p>
+      <h2 class="text-2xl md:text-3xl font-bold text-[#005BAC] mb-6">Visit Us</h2>
+      <p class="text-gray-600 mb-4">📍 Fisher Mall, Quezon Avenue, Quezon City</p>
       <p class="text-gray-600 mb-6">
         📞 +63 9XX XXX XXXX <br>
         ✉ fishermall@kumon.ph
       </p>
-
       <form class="grid gap-4">
-        <input type="text" placeholder="Parent Name" class="border rounded-full px-6 py-3">
-        <input type="email" placeholder="Email Address" class="border rounded-full px-6 py-3">
-        <button class="bg-[#005BAC] text-white rounded-full px-6 py-3 hover:bg-blue-800 transition">
+        <input type="text"  placeholder="Parent Name"    class="border rounded-full px-6 py-3 outline-none focus:ring-2 focus:ring-[#005BAC]">
+        <input type="email" placeholder="Email Address"  class="border rounded-full px-6 py-3 outline-none focus:ring-2 focus:ring-[#005BAC]">
+        <button type="submit" class="bg-[#005BAC] text-white rounded-full px-6 py-3 hover:bg-blue-800 transition">
           Book Consultation
         </button>
       </form>
@@ -310,40 +564,94 @@ body {
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="glass py-10 px-6 mt-20">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 gap-4 text-center md:text-left">
-    <p>© 2026 Kumon Fishermall</p>
-    <div class="flex gap-6">
-      <a href="#" class="hover:text-[#005BAC]">Privacy Policy</a>
-      <a href="#" class="hover:text-[#005BAC]">Terms of Service</a>
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="glass pt-16 pb-8 px-6 mt-20">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Top grid -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <p class="text-lg font-bold text-[#005BAC] mb-3">Kumon Fishermall</p>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">
+          Developing confident, independent, and academically advanced learners
+          through the globally proven Kumon Method.
+        </p>
+        <p class="text-xs text-gray-400">Member of Kumon Philippines</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <p class="text-sm font-semibold text-gray-800 mb-4">Quick Links</p>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li><a href="#kumon"       class="hover:text-[#005BAC] transition">Home</a></li>
+          <li><a href="#about"       class="hover:text-[#005BAC] transition">About Us</a></li>
+          <li><a href="#programs"    class="hover:text-[#005BAC] transition">Our Programs</a></li>
+          <li><a href="#kumonconnect" class="hover:text-[#005BAC] transition">Kumon Connect</a></li>
+          <li><a href="#location"    class="hover:text-[#005BAC] transition">Location</a></li>
+        </ul>
+      </div>
+
+      <!-- Programs -->
+      <div>
+        <p class="text-sm font-semibold text-gray-800 mb-4">Programs</p>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li><a href="#programs" class="hover:text-[#005BAC] transition">Mathematics</a></li>
+          <li><a href="#programs" class="hover:text-[#005BAC] transition">Reading &amp; English</a></li>
+          <li><a href="#programs" class="hover:text-[#005BAC] transition">Early Learners</a></li>
+          <li><a href="#kumonconnect" class="hover:text-[#005BAC] transition">Kumon Connect</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="text-sm font-semibold text-gray-800 mb-4">Contact Us</p>
+        <ul class="space-y-3 text-sm text-gray-500">
+          <li class="flex gap-2 items-start">
+            <span>📍</span>
+            <span>Fisher Mall, Quezon Avenue,<br>Quezon City</span>
+          </li>
+          <li class="flex gap-2 items-center">
+            <span>📞</span>
+            <span>+63 9XX XXX XXXX</span>
+          </li>
+          <li class="flex gap-2 items-center">
+            <span>✉</span>
+            <span>fishermall@kumon.ph</span>
+          </li>
+          <li class="flex gap-2 items-center">
+            <span>🕐</span>
+            <span>Mon – Sat, 9:00 AM – 6:00 PM</span>
+          </li>
+        </ul>
+      </div>
+
     </div>
+
+    <!-- CTA strip -->
+    <div class="bg-[#005BAC] rounded-2xl px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+      <div>
+        <p class="text-white font-semibold text-base">Ready to start your child's Kumon journey?</p>
+        <p class="text-blue-200 text-sm mt-0.5">Book a free assessment today — no commitment required.</p>
+      </div>
+      <a href="#location" class="bg-white text-[#005BAC] font-semibold text-sm px-6 py-2.5 rounded-full hover:bg-blue-50 transition whitespace-nowrap">
+        Book Free Assessment
+      </a>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-gray-400 text-center">
+      <p>© 2026 Kumon Fishermall. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-[#005BAC] transition">Privacy Policy</a>
+        <a href="#" class="hover:text-[#005BAC] transition">Terms of Service</a>
+        <a href="#" class="hover:text-[#005BAC] transition">Cookie Policy</a>
+      </div>
+    </div>
+
   </div>
 </footer>
-
-<script>
-// Mobile Menu
-const btn = document.getElementById("menu-btn");
-const menu = document.getElementById("mobile-menu");
-
-btn.addEventListener("click", () => {
-  menu.classList.toggle("hidden");
-});
-
-// Scroll Reveal
-const reveals = document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll", () => {
-  reveals.forEach((el) => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-
-    if (elementTop < windowHeight - 100) {
-      el.classList.add("active");
-    }
-  });
-});
-</script>
 
 </body>
 </html>
